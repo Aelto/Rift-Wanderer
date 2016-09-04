@@ -2,7 +2,7 @@
 Get more informations on your League Of Legends games with a native app
 
 ## Video preview
-_coming soon!_
+[Youtube video](https://youtu.be/JFY3zmKBp4Q)
 
 ## The app structure
 Rift Wanderer uses `vue.js` with `webpack` to get access to vuejs' single-file-components and es6 syntax.
