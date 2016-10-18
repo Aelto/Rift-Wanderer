@@ -25,13 +25,15 @@ export const getSummonerData = (apiKey, summonerName) => {
 
         console.log('fetching...')
 
+        const formatedSummonerName = summonerName.toLowerCase().split(' ').join('')
+
         // we'll look if the summoner is in the cache or not
         // we don't have to send a request to the riot API 
         // it can also save bandwidth (like <1kb !)
         if ( cacheManager.isSummonerInCache(summonerName) ) {
             // the user was found in the cache
             // we retrieve the string and parse it
-            resolve( JSON.parse(cacheManager.getCachedSummoners()[summonerName])[summonerName] )
+            resolve( JSON.parse(cacheManager.getCachedSummoners()[formatedSummonerName])[formatedSummonerName] )
 
         } else {
 
@@ -46,7 +48,7 @@ export const getSummonerData = (apiKey, summonerName) => {
                 cacheManager.addSummonerInCache(summonerName, data)
 
                 // we continue...
-                resolve( JSON.parse(data)[summonerName.toLowerCase()] )
+                resolve( JSON.parse(data)[formatedSummonerName] )
 
             }, errorMessage => {
                 // the user was not found if the riot API
