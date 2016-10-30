@@ -8,8 +8,8 @@ let home
 app.on('ready', () => {
 
     home = new BrowserWindow({
-        width: 950,
-        height: 600,
+        width: 250,
+        height: 450,
         frame: false
     })
 

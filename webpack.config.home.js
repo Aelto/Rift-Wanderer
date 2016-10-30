@@ -1,5 +1,5 @@
 module.exports = {
-    entry: './src/home/main.js',
+    entry: ['babel-polyfill', './src/home/main.js'],
     target: 'electron',
     output: {
         path: `./app/home`,

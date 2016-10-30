@@ -28,7 +28,7 @@ body .content {
 	font-family: 'Roboto';
 
 
-	background-image: url('../assets/img/background.jpg');
+	background-image: url('../assets/img/background_2.jpg');
 	background-size: cover;
 }
 
@@ -81,73 +81,53 @@ body .content {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
-		text-align: center;
+		
+		/*justify-content: center;
+		text-align: center;*/
 
 		z-index: 1;
 	}
 
-		.content .home-page .edit-button {
-			position: absolute;
-			top: 0;
-			left: 0;
-			color: rgba(255, 255, 255, 0.7);
-			padding: 8px;
-			cursor: pointer;
-
-			width: 100%;
-			min-height: '0%';
-			background: rgba(10, 10, 45, 0.2);
-
-			-webkit-app-region: no-drag;
-			cursor: pointer;
-			-webkit-user-select: none;
-			z-index: 1;
-
-			transition: .35s all ease-in-out;
-		}
-
 		.content .home-page .new-summoner-name {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			color: rgba(255, 255, 255, 0.7);
-			padding: 12px;
-			font-size: 48px;
-			text-align: center;
-			cursor: pointer;
-
-			background: rgba(210, 210, 255, 0.2);
-			outline: none;
-			border: none;
-			border-bottom: solid 3px rgba(255, 255, 255, 0.7);
-			overflow: hidden;
+			position: fixed;
+			bottom: 0%;
 
 			display: inline-block;
-
+			color: rgba(146, 103, 38, 1);
+			background: rgba(20, 45, 55, 0.3);
+			text-shadow: 0 0 60px black;
+			font-size: 48px;
+			
+			text-align: center;
+			cursor: text;
+			overflow: hidden;
+			box-sizing: border-box;
+			width: 100%;
+			padding: 12px;
+			border: none;
+			outline: none;
+			border-top: solid 1px currentColor;
+			box-shadow: 0 0 12px 1px rgba(20, 20, 20, 0.2);
+			
 			-webkit-app-region: no-drag;
-			cursor: pointer;
 			-webkit-user-select: none;
-			z-index: 15;
-			max-width: 100%;
 
-			transition: .5s all ease-in-out;
+			transition: .2s all cubic-bezier(0.25, 0.5, 0.5, 1.5);
+			z-index: 15;
 		}
 
 		.home-page .summoner-name {
 			position: relative;
 			display: inline-block;
-			margin: auto;
 			font-size: 48px;
-			color: rgba(255, 255, 255, 0.7);
-			!mix-blend-mode: soft-light;
+			color: rgba(146, 103, 38, 1);
+			text-shadow: 0 0 60px black;
+			background: rgba(20, 45, 55, 0.3);
 
 			padding: 12px;
-			border-bottom: solid 3px rgba(255, 255, 255, 0.7);
-			!border: solid 5px rgba(255, 255, 255, 0.7);
-			-webkit-filter: drop-shadow(0 0 3px rgba(20, 20, 20, 0.6));
-
+			border-bottom: solid 1px currentColor;
+			box-shadow: 0 0 12px 1px rgba(20, 20, 20, 0.2);
+			
 			-webkit-app-region: no-drag;
 			cursor: pointer;
 			-webkit-user-select: none;
@@ -155,52 +135,42 @@ body .content {
 			transition: .2s all cubic-bezier(0.25, 0.5, 0.5, 1.5)
 		}
 
-			.home-page .summoner-name:hover:before {
-				width: 100%;
-				transition: 0.2s all;
-			}
+				.content .summoner-name.active:after, .content .summoner-name.active:before {
+					opacity: 0;
+				}
 
-			.home-page .summoner-name:before {
-				content: '';
-				position: absolute;
-				left: 50%;
-				top: 0;
-				transform: translate(-50%, 0);
+		.home-page .summoner-name::after {
+			display: block;
+			content: "double click to change";
+			font-size: 25%;
+			color: rgba(145, 145, 145, 1);
+		}
 
-				height: 3px;
-				width: 0;
-				background: rgba(255, 255, 255, 0.7);
-				transition: 0.2s 0.2s all;
-			}
+		.home-page .launch-game-button {
+			background: linear-gradient(to bottom right, rgb(166, 79, 0), rgb(150, 25, 15));
+			margin: 18px auto;
+			padding: 15px;
+			border: solid 1px rgba(146,103,38,0.6);
+			display: inline-block;
+			box-shadow: 0 0 15px 1px rgba(20, 20, 20, 0.9);
+			color: white;
+			text-transform: capitalize;
+			font-family: 'Roboto';
+			font-size: 120%;
+			cursor: pointer;
+			-webkit-app-region: no-drag;
+			transition: .2s all cubic-bezier(0.25, 0.5, 0.5, 1.5)
+		}
 
-			.content .summoner-name:hover:after {
-				height: calc(100% - 3px);
-				transition: 0.2s 0.2s all;
-			}
-
-			.content .summoner-name:after {
-				content: '';
-				position: absolute;
-				top: 3px;
-				left: 0;
-				width: calc(100% - 6px);
-				height: 0;
-
-				border-width: 0 3px 0 3px;
-				border-style: solid;
-				border-color: rgba(255, 255, 255, 0.7);
-				transition: 0.2s 0s all;
-			}
-
-			.content .summoner-name.active {
+			.content .launch-game-button.active {
 				transform: scale(0.8);
 				opacity: 0.7;
 				cursor: not-allowed;
 			}
 
-				.content .summoner-name.active:after, .content .summoner-name.active:before {
-					opacity: 0;
-				}
+			.home-page .launch-game-button:hover {
+				filter: contrast(120%);
+			}
 
 		.home-page .app-state {
 			position: absolute;

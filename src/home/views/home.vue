@@ -1,24 +1,23 @@
 <template>
     <div id='home-page' class="home-page">
-        
-        <div class='edit-button'
-            v-on:click='toggleChangeNameInputVisibility()'>
-            change summoner name
-        </div>
 
         <transition name='newsummonername'>
-            <input class='new-summoner-name' placeholder=''
+            <input class='new-summoner-name' placeholder='new name'
             v-model='newSummonerName'
             v-if='changeNameInputVisible'
-            v-on:keypress.enter='setNewSummonerName()'
-            >
+            v-on:keypress.enter='setNewSummonerName()'>
         </transition>
         
 
-        <div class='launch-game-button summoner-name'
-            v-bind:class="[global.searchingGame ? 'active' : '']"
-            v-on:click="global.waitForGame()">
+        <div class='summoner-name'
+            v-on:dblclick='toggleChangeNameInputVisibility()'>
             {{ global.summonername }}
+        </div>
+
+        <div class='launch-game-button'
+            v-bind:class="[global.searchingGame || changeNameInputVisible ? 'active' : '']"
+            v-on:click="global.waitForGame()">
+            spectate
         </div>
 
         <div class='app-state' v-bind:text-content="'appState'">
@@ -39,16 +38,7 @@
         },
         methods: {
             toggleChangeNameInputVisibility: function () {
-
                this.changeNameInputVisible = !this.changeNameInputVisible
-
-                if ( this.changeNameInputVisible ) {
-                    document.querySelector('.edit-button').style.minHeight = '100%'
-                    document.querySelector('.launch-game-button').style.opacity = '0.3'
-                } else {
-                    document.querySelector('.edit-button').style.minHeight = '0%'
-                    document.querySelector('.launch-game-button').style.opacity = '1'
-                }
             },
             setNewSummonerName: function () {
                 this.toggleChangeNameInputVisibility()
@@ -74,7 +64,10 @@
 
 <style scoped>
         .newsummonername-enter, .newsummonername-leave-active {
-            opacity: 0;
-            max-width: 0%!important;
+            transform: translate(0, 100%)
+        }
+
+        .newsummonername-enter-active, .newsummonername-leave {
+            transform: translate(0, 0%)
         }
 </style>
