@@ -1,3 +1,5 @@
+> You may want to check [Stava](https://github.com/Aelto/Stava), which is roughly the same concept but a bit more advanced with a few new concepts. **This repository was created as an experiment and is no longer maintained**, sorry for the wasted clicks.
+
 # Rift Wanderer
 Get more informations on your League Of Legends games with a native app
 
